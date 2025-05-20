@@ -5,5 +5,7 @@
         <attribute name="image1" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="image2" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="video1" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="video2" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
     </entity>
 </model>

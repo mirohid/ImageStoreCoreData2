@@ -148,12 +148,16 @@
 				DEVELOPMENT_TEAM = T97Y37DPWY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageStoreCoreData2/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos and videos.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to record audio with videos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select photos and videos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -177,12 +181,16 @@
 				DEVELOPMENT_TEAM = T97Y37DPWY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ImageStoreCoreData2/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos and videos.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to record audio with videos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photo library to select photos and videos.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
