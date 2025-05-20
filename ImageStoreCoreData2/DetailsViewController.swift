@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import AVFoundation
-
+import AVKit
 class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DetailsTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -90,21 +90,22 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     // Generate thumbnail from video data
+   
     func generateThumbnail(from videoData: Data) -> UIImage? {
-        // Save video data temporarily to file to generate thumbnail
-        let tempDirectory = URL(fileURLWithPath: NSTemporaryDirectory())
-        let tempVideoURL = tempDirectory.appendingPathComponent(UUID().uuidString).appendingPathExtension("mp4")
+        let tempURL = URL(fileURLWithPath: NSTemporaryDirectory())
+            .appendingPathComponent(UUID().uuidString)
+            .appendingPathExtension("mp4")
+
         do {
-            try videoData.write(to: tempVideoURL)
-            let asset = AVAsset(url: tempVideoURL)
-            let imageGenerator = AVAssetImageGenerator(asset: asset)
-            imageGenerator.appliesPreferredTrackTransform = true
-            let time = CMTimeMake(value: 1, timescale: 2)
-            let cgImage = try imageGenerator.copyCGImage(at: time, actualTime: nil)
-            try? FileManager.default.removeItem(at: tempVideoURL) // Clean up
+            try videoData.write(to: tempURL)
+            let asset = AVAsset(url: tempURL)
+            let generator = AVAssetImageGenerator(asset: asset)
+            generator.appliesPreferredTrackTransform = true
+            let cgImage = try generator.copyCGImage(at: CMTimeMake(value: 1, timescale: 2), actualTime: nil)
+            try? FileManager.default.removeItem(at: tempURL)
             return UIImage(cgImage: cgImage)
         } catch {
-            print("Failed to generate thumbnail: \(error)")
+            print("Thumbnail generation failed: \(error)")
             return nil
         }
     }
@@ -132,5 +133,36 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         present(alert, animated: true)
     }
+    
+    
+    func imageView1Tapped(cell: DetailsTableViewCell) {
+            guard let indexPath = tableView.indexPath(for: cell),
+                  let videoData = users[indexPath.row].video1 else { return }
+            playVideo(from: videoData)
+        }
+
+        func imageView2Tapped(cell: DetailsTableViewCell) {
+            guard let indexPath = tableView.indexPath(for: cell),
+                  let videoData = users[indexPath.row].video2 else { return }
+            playVideo(from: videoData)
+        }
+
+        // MARK: - Play Video
+        func playVideo(from videoData: Data) {
+            let tempURL = URL(fileURLWithPath: NSTemporaryDirectory())
+                .appendingPathComponent(UUID().uuidString)
+                .appendingPathExtension("mp4")
+            do {
+                try videoData.write(to: tempURL)
+                let player = AVPlayer(url: tempURL)
+                let playerVC = AVPlayerViewController()
+                playerVC.player = player
+                present(playerVC, animated: true) {
+                    player.play()
+                }
+            } catch {
+                print("Video playback failed: \(error)")
+            }
+        }
 
 }

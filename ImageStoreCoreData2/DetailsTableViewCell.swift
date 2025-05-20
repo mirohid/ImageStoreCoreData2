@@ -9,6 +9,8 @@ import UIKit
 
 protocol DetailsTableViewCellDelegate: AnyObject {
     func deleteButtonTapped(cell: DetailsTableViewCell)
+    func imageView1Tapped(cell: DetailsTableViewCell)
+    func imageView2Tapped(cell: DetailsTableViewCell)
 }
 
 
@@ -18,7 +20,6 @@ class DetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var imageView2: UIImageView!
-    
     @IBOutlet weak var deleteImageView: UIImageView!
     
     weak var delegate: DetailsTableViewCellDelegate?
@@ -77,11 +78,24 @@ class DetailsTableViewCell: UITableViewCell {
         deleteImageView.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(deleteTapped))
         deleteImageView.addGestureRecognizer(tap)
+        
+        
+        imageView1.isUserInteractionEnabled = true
+        imageView2.isUserInteractionEnabled = true
+        imageView1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(image1Tapped)))
+        imageView2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(image2Tapped)))
     }
 
     @objc func deleteTapped() {
         delegate?.deleteButtonTapped(cell: self)
     }
+    @objc func image1Tapped() {
+            delegate?.imageView1Tapped(cell: self)
+        }
+
+        @objc func image2Tapped() {
+            delegate?.imageView2Tapped(cell: self)
+        }
 
     // MARK: - Public methods to show/hide play icon overlays
     func showPlayIconOnImageView1(_ show: Bool) {
