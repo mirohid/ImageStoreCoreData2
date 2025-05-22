@@ -24,6 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
            super.viewDidLoad()
+           print("View Loaded")
 
            let tap1 = UITapGestureRecognizer(target: self, action: #selector(image1Tapped))
            imageView1.addGestureRecognizer(tap1)
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                }
            }))
 
-           alert.addAction(UIAlertAction(title: "Pick from Gallery", style: .default, handler: { _ in
+           alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
                picker.sourceType = .photoLibrary
                self.present(picker, animated: true)
            }))
